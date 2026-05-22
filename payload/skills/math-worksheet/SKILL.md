@@ -21,7 +21,7 @@ Wolfram is the source of truth for answers. Do not generate the answer yourself 
 
 2. Call the script with `--llm` (Wolfram's LLM API):
    ```bash
-   python3 ~/.claude/skills/math-worksheet/verify.py \
+   python3 {{SKILLS_DIR}}/math-worksheet/verify.py \
      --app-id-file ~/.config/wolfram/app_id \
      --llm \
      "<wolfram_expr>"

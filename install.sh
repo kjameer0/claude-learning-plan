@@ -27,11 +27,30 @@ confirm_overwrite() {
 
 mkdir -p "$CLAUDE_SKILLS" "$WORKSPACE/ai-resources" "$WORKSPACE/sample-modules"
 
+# Resolve to absolute paths for token substitution so installed skills work
+# regardless of which directory Claude is invoked from.
+ABS_WORKSPACE="$(cd "$WORKSPACE" && pwd)"
+ABS_SKILLS="$(cd "$CLAUDE_SKILLS" && pwd)"
+
+substitute_tokens() {
+  # In-place replace {{WORKSPACE}} and {{SKILLS_DIR}} across a directory tree.
+  local root="$1"
+  find "$root" -type f \( -name '*.md' -o -name '*.py' -o -name '*.yaml' -o -name '*.yml' \) -print0 \
+    | while IFS= read -r -d '' f; do
+        sed -i.bak \
+          -e "s|{{WORKSPACE}}|$ABS_WORKSPACE|g" \
+          -e "s|{{SKILLS_DIR}}|$ABS_SKILLS|g" \
+          "$f"
+        rm -f "$f.bak"
+      done
+}
+
 for skill in learning-plan math-worksheet; do
   dest="$CLAUDE_SKILLS/$skill"
   if confirm_overwrite "$dest"; then
     cp -R "$PAYLOAD/skills/$skill" "$dest"
-    echo "  installed skill: $skill"
+    substitute_tokens "$dest"
+    echo "  installed skill: $skill (paths resolved)"
   fi
 done
 
@@ -64,6 +83,7 @@ Post-install steps:
   4. In Claude Code, invoke the skill:
        /learning-plan generate <topic>
 
-If your workspace lives elsewhere, set CLAUDE_WORKSPACE_DIR before running,
-and update any path references in the installed skills accordingly.
+To install to non-default locations, re-run with:
+  CLAUDE_WORKSPACE_DIR=/custom/workspace CLAUDE_SKILLS_DIR=/custom/skills ./install.sh
+Path tokens in the skill source are resolved automatically at install time.
 EOF

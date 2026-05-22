@@ -28,7 +28,7 @@ learning-plan-pkg/
 | `payload/workspace/ai-resources/learning-philosophy.md` | `~/claude-workspace/ai-resources/learning-philosophy.md` |
 | `payload/workspace/sample-modules/quadratics` | `~/claude-workspace/sample-modules/quadratics` |
 
-The skills reference `~/claude-workspace/...` paths by absolute path. If you keep your workspace elsewhere, either symlink `~/claude-workspace` to your actual workspace or grep-replace the paths inside the installed skill files.
+The skill source files in `payload/` use `{{WORKSPACE}}` and `{{SKILLS_DIR}}` tokens instead of hard-coded paths. `install.sh` resolves these to absolute paths (from `CLAUDE_WORKSPACE_DIR` / `CLAUDE_SKILLS_DIR`, defaults shown above) when copying into place. The installed skill files contain concrete paths — no runtime variable resolution needed.
 
 ## Prerequisites
 

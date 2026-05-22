@@ -1,20 +1,20 @@
 # generate
 
-Create a new learning module folder for a given topic, conforming to the structure of `~/claude-workspace/sample-modules/quadratics/`.
+Create a new learning module folder for a given topic, conforming to the structure of `{{WORKSPACE}}/sample-modules/quadratics/`.
 
 ## Inputs to confirm with the user
 
 - **Topic** (e.g. "trigonometry basics", "linear algebra: vectors")
 - **Learner state** — a short markdown blob describing what they know, what they're shaky on, what they haven't touched. Used to (a) pick the entry node and (b) flag missing prereqs.
-- **Output path** — default `~/claude-workspace/sample-modules/<topic-slug>/`. Confirm before writing if the path already exists.
+- **Output path** — default `{{WORKSPACE}}/sample-modules/<topic-slug>/`. Confirm before writing if the path already exists.
 
 If the user invokes without learner state, ask for it before generating. Without it, the entry node guess is unreliable.
 
 ## Steps
 
-1. **Read the philosophy doc.** `~/claude-workspace/ai-resources/learning-philosophy.md`. Anchor on §4 (encoding tiers), §6 (fluency vs schema), §9 (metacog), §12 (prerequisite structure).
+1. **Read the philosophy doc.** `{{WORKSPACE}}/ai-resources/learning-philosophy.md`. Anchor on §4 (encoding tiers), §6 (fluency vs schema), §9 (metacog), §12 (prerequisite structure).
 
-2. **Read the canonical module.** `~/claude-workspace/sample-modules/quadratics/` — every file. The shape of the output should match this exactly.
+2. **Read the canonical module.** `{{WORKSPACE}}/sample-modules/quadratics/` — every file. The shape of the output should match this exactly.
 
 3. **Draft the concept DAG.** Decompose the topic into 5–10 nodes. For each:
    - Identify prereqs (incoming edges) and what it enables (outgoing edges)

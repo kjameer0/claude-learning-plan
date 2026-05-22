@@ -1,15 +1,15 @@
 ---
 name: learning-plan
-description: Generate, audit, refine, schedule, and run learning modules for math (or any prerequisite-heavy domain) following the learning philosophy at ~/claude-workspace/ai-resources/learning-philosophy.md. Produces a concept-DAG module folder with typed exercises (fluency + schema-building), pre-generated worksheets via the math-worksheet skill, a calendar (.ics) schedule with stable session UIDs, and session logs for marginal-gains tracking. Use when the user wants to plan a learning module, schedule study sessions on their calendar, mark a session complete, reschedule around blackouts, or refine an existing module. Subcommands - generate, audit, diagnose, refine, schedule, complete, reschedule.
+description: Generate, audit, refine, schedule, and run learning modules for math (or any prerequisite-heavy domain) following the learning philosophy at {{WORKSPACE}}/ai-resources/learning-philosophy.md. Produces a concept-DAG module folder with typed exercises (fluency + schema-building), pre-generated worksheets via the math-worksheet skill, a calendar (.ics) schedule with stable session UIDs, and session logs for marginal-gains tracking. Use when the user wants to plan a learning module, schedule study sessions on their calendar, mark a session complete, reschedule around blackouts, or refine an existing module. Subcommands - generate, audit, diagnose, refine, schedule, complete, reschedule.
 ---
 
 # learning-plan
 
-A full-lifecycle skill for building executable learning modules from the philosophy in `~/claude-workspace/ai-resources/learning-philosophy.md`. Each subcommand maps to a phase: **plan → test → refine → schedule → run → refine continuously**.
+A full-lifecycle skill for building executable learning modules from the philosophy in `{{WORKSPACE}}/ai-resources/learning-philosophy.md`. Each subcommand maps to a phase: **plan → test → refine → schedule → run → refine continuously**.
 
 ## Foundational reference
 
-Before doing any work, treat `~/claude-workspace/ai-resources/learning-philosophy.md` as the source of truth for **why** the artifacts are shaped the way they are. Key sections referenced by subcommands:
+Before doing any work, treat `{{WORKSPACE}}/ai-resources/learning-philosophy.md` as the source of truth for **why** the artifacts are shaped the way they are. Key sections referenced by subcommands:
 
 - §3 Encoding & retrieval — drives the typed-exercise split
 - §4 Encoding tiers — surface / relational / extended
@@ -19,7 +19,7 @@ Before doing any work, treat `~/claude-workspace/ai-resources/learning-philosoph
 - §10 Techniques (Bear Hunter, Whole-Part-Whole, GRINDE, interleaving, marginal-gains)
 - §12 Prerequisite structure — math is a directed graph
 
-The canonical reference module (matches the structure all generated modules should follow) is at `~/claude-workspace/sample-modules/quadratics/`.
+The canonical reference module (matches the structure all generated modules should follow) is at `{{WORKSPACE}}/sample-modules/quadratics/`.
 
 ## Dispatch
 
@@ -43,7 +43,7 @@ If the user invokes `/learning-plan` with no subcommand, ask which phase they wa
 - **plan.yaml is the source of truth.** Any subcommand that changes scheduling state reads and rewrites it. Other markdown files are human-readable views derived from or paired with `plan.yaml`.
 - **Stable UIDs.** Session UIDs are sequence-based: `<module>-session-NN@learning-plan`. Re-imports update events in place.
 - **Sessions ride sequence, not dates.** `target_offset` in `plan.yaml` is "sessions after the previous one." Calendar dates are computed at `.ics`-generation time from `start_date` + `cadence` + `blackouts` + `completed_on` timestamps. See `lib/cadence.md`.
-- **Worksheet integration.** Fluency worksheets are produced by calling the `math-worksheet` skill (see `~/.claude/skills/math-worksheet/SKILL.md`) with each node's `fluency_spec`. Output paths land in `nodes/NN-<slug>/fluency-vN.md` and `fluency-vN-key.md` — not the cwd default.
+- **Worksheet integration.** Fluency worksheets are produced by calling the `math-worksheet` skill (see `{{SKILLS_DIR}}/math-worksheet/SKILL.md`) with each node's `fluency_spec`. Output paths land in `nodes/NN-<slug>/fluency-vN.md` and `fluency-vN-key.md` — not the cwd default.
 - **Reuse, don't regenerate.** If a module folder exists, work within it. Do not overwrite a node `.md` unless `refine` explicitly says to.
 
 ## Templates and lib
