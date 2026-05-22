@@ -1,0 +1,109 @@
+module: quadratics
+goal_node: 08-parabola-geometry
+created_on: 2026-05-21
+learner_state: |
+  Mid-Algebra 1. Comfortable with FOIL and factoring monic trinomials.
+  Has derived standard form of a parabola from focus/directrix once; would
+  need to re-derive cold. Weak on completing the square with a != 1.
+  Has not touched trigonometry.
+
+nodes:
+  - id: 01-expanding-foil
+    prereqs: []
+    enables: [02-factoring, 03-standard-form]
+    tier: fluency-heavy
+    fluency_spec:
+      topic: "polynomial multiplication, binomial times binomial"
+      count: 10
+      difficulty: algebra-1
+    schema_exercises: 3
+    metacog: [explanation, transfer, connection]
+
+  - id: 02-factoring
+    prereqs: [01-expanding-foil]
+    enables: [03-standard-form, 04-roots-and-zeros]
+    tier: fluency-heavy
+    fluency_spec:
+      topic: "factoring monic and non-monic trinomials, plus difference of squares"
+      count: 10
+      difficulty: algebra-1
+    schema_exercises: 3
+    metacog: [explanation, transfer, connection]
+
+  - id: 03-standard-form
+    prereqs: [01-expanding-foil, 02-factoring]
+    enables: [04-roots-and-zeros, 05-vertex-form]
+    tier: mixed
+    fluency_spec:
+      topic: "identifying coefficients and evaluating quadratic expressions in standard form ax^2 + bx + c"
+      count: 6
+      difficulty: algebra-1
+    schema_exercises: 3
+    metacog: [explanation, transfer, connection]
+
+  - id: 04-roots-and-zeros
+    prereqs: [02-factoring, 03-standard-form]
+    enables: [07-quadratic-formula]
+    tier: mixed
+    fluency_spec:
+      topic: "finding roots/zeros of quadratics by factoring"
+      count: 8
+      difficulty: algebra-1
+    schema_exercises: 3
+    metacog: [explanation, transfer, connection]
+
+  - id: 05-vertex-form
+    prereqs: [03-standard-form]
+    enables: [06-completing-the-square, 08-parabola-geometry]
+    tier: mixed
+    fluency_spec:
+      topic: "identifying vertex from vertex form a(x-h)^2 + k and converting between vertex and standard form"
+      count: 6
+      difficulty: algebra-1
+    schema_exercises: 3
+    metacog: [explanation, transfer, connection]
+
+  - id: 06-completing-the-square
+    prereqs: [03-standard-form, 05-vertex-form]
+    enables: [07-quadratic-formula]
+    tier: schema-heavy
+    fluency_spec:
+      topic: "completing the square for monic and non-monic quadratics to convert to vertex form"
+      count: 6
+      difficulty: algebra-1
+    schema_exercises: 4
+    metacog: [explanation, transfer, connection]
+
+  - id: 07-quadratic-formula
+    prereqs: [04-roots-and-zeros, 06-completing-the-square]
+    enables: [08-parabola-geometry]
+    tier: schema-heavy
+    fluency_spec:
+      topic: "solving quadratic equations using the quadratic formula, including using the discriminant to determine the number of real roots"
+      count: 6
+      difficulty: algebra-1
+    schema_exercises: 4
+    metacog: [explanation, transfer, connection]
+
+  - id: 08-parabola-geometry
+    prereqs: [05-vertex-form, 07-quadratic-formula]
+    enables: []
+    tier: schema-heavy
+    fluency_spec: null   # node is explicitly fluency-light; schema only
+    schema_exercises: 5
+    metacog: [explanation, transfer, connection]
+
+external_prereqs:
+  - variables and algebraic expressions
+  - distributive property
+  - solving linear equations
+  - combining like terms
+  - Cartesian coordinates and graphing points
+  - Pythagorean theorem and the distance formula  # required by node 08
+
+cadence: null   # filled by /learning-plan schedule
+
+review_policy:
+  spacing: [1, 3, 7, 14]   # sessions-after-completion
+
+sessions: []    # filled by /learning-plan schedule
