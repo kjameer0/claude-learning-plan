@@ -88,6 +88,6 @@ If no module / open session is found, run standalone (just reply to the user, wr
 
 ## See also
 
-- `image-reader` agent: `/Users/khalidjameer/.claude/agents/image-reader.md` — the contract for what the subagent returns.
+- `image-reader` agent: `{{AGENTS_DIR}}/image-reader.md` — the contract for what the subagent returns.
 - `/wolfram` skill: used by `grade` for math verification.
 - `/learning-plan`: session-attached mode integrates with its session logs.

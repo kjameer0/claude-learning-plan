@@ -24,7 +24,7 @@ For each problem:
 
 1. Run:
    ```
-   python3 /Users/khalidjameer/.claude/skills/math-worksheet/verify.py \
+   python3 {{SKILLS_DIR}}/math-worksheet/verify.py \
      --app-id-file ~/.config/wolfram/app_id \
      --llm \
      "<Q>"
