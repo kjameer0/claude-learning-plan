@@ -9,7 +9,10 @@ This directory packages the `learning-plan` Claude Code skill plus dependencies.
 | `payload/skills/learning-plan` | `~/.claude/skills/learning-plan` | Main skill |
 | `payload/skills/math-worksheet` | `~/.claude/skills/math-worksheet` | Required dependency |
 | `payload/skills/wolfram` | `~/.claude/skills/wolfram` | Ad-hoc Wolfram queries — delegates execution to the `wolfram-runner` subagent |
-| `payload/agents/wolfram-runner.md` | `~/.claude/agents/wolfram-runner.md` | Sonnet subagent that runs Wolfram queries so verbose output stays out of the parent (Opus) context |
+| `payload/skills/image` | `~/.claude/skills/image` | Read/grade images (screenshots, PDFs, handwritten work). Delegates vision to `image-reader`, math verification to `grade-runner` |
+| `payload/agents/wolfram-runner.md` | `~/.claude/agents/wolfram-runner.md` | Haiku subagent that runs Wolfram queries so verbose output stays out of the parent (Opus) context |
+| `payload/agents/image-reader.md` | `~/.claude/agents/image-reader.md` | Haiku subagent that transcribes images so vision tokens stay out of the parent context |
+| `payload/agents/grade-runner.md` | `~/.claude/agents/grade-runner.md` | Haiku subagent that grades a batch of (Q, A, work) triples via Wolfram |
 | `payload/workspace/ai-resources/learning-philosophy.md` | `~/claude-workspace/ai-resources/learning-philosophy.md` | Foundational reference |
 | `payload/workspace/sample-modules/quadratics` | `~/claude-workspace/sample-modules/quadratics` | Canonical example module |
 

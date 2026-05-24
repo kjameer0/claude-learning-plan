@@ -80,7 +80,7 @@ substitute_tokens() {
       done
 }
 
-for skill in learning-plan math-worksheet wolfram; do
+for skill in learning-plan math-worksheet wolfram image; do
   dest="$CLAUDE_SKILLS/$skill"
   if confirm_overwrite "$dest"; then
     cp -R "$PAYLOAD/skills/$skill" "$dest"
