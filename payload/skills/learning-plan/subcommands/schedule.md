@@ -43,7 +43,7 @@ Defaults: weekdays only, 09:00 start time, no initial blackouts.
 
 5. **Compute calendar dates** using `lib/cadence.md`. Produce a date for each session from `start_date`, `cadence`, `standing_constraints`, `blackouts`, and (initially empty) `completed_on` timestamps.
 
-6. **Write `<module>/schedule/sessions.md`** — human-readable session-by-session walkthrough. For each session:
+6. **Write `<module>/schedule/sessions.md`** — human-readable session-by-session walkthrough. **Every file reference in activities and the References block must be a clickable relative-path markdown link**, not a bare path or backticked path. Markdown links of the form `[display.md](../path/to/file.md)` render as clickable in both Obsidian and GitHub. Paths are relative to `schedule/sessions.md`, so module-root files are `../<file>`, node files are `../nodes/<NN-slug>.md`, worksheets are `../nodes/<NN-slug>/fluency-vN.md`, and session logs are `logs/session-NN.md`.
 
    ```markdown
    ## Session NN — <type> — <YYYY-MM-DD HH:MM> — <minutes>min
@@ -51,17 +51,20 @@ Defaults: weekdays only, 09:00 start time, no initial blackouts.
    **Nodes:** `<node id>` (or none for orientation, multiple for interleaving)
 
    **Activities:**
-   - [ ] <activity 1>
-   - [ ] <activity 2>
-   - [ ] Fill in session log: `schedule/logs/session-NN.md`
+   - [ ] Read [nodes/<NN-slug>.md](../nodes/<NN-slug>.md)
+   - [ ] Work through [nodes/<NN-slug>/fluency-v1.md](../nodes/<NN-slug>/fluency-v1.md)
+   - [ ] Check against [fluency-v1-key.md](../nodes/<NN-slug>/fluency-v1-key.md)
+   - [ ] Fill in [schedule/logs/session-NN.md](logs/session-NN.md)
 
    **References:**
-   - Node file: `nodes/<NN-slug>.md`
-   - Fluency worksheet: `nodes/<NN-slug>/fluency-v1.md`
-   - Answer key (don't peek until done): `nodes/<NN-slug>/fluency-v1-key.md`
+   - Node file: [nodes/<NN-slug>.md](../nodes/<NN-slug>.md)
+   - Fluency worksheet: [nodes/<NN-slug>/fluency-v1.md](../nodes/<NN-slug>/fluency-v1.md)
+   - Answer key (don't peek until done): [fluency-v1-key.md](../nodes/<NN-slug>/fluency-v1-key.md)
 
    **When done:** run `/learning-plan complete <module> NN`
    ```
+
+   Module-root references in orientation / grinde-map / final-whole sessions follow the same rule: `[README.md](../README.md)`, `[goals.md](../goals.md)`, `[concept-graph.md](../concept-graph.md)`. Do **not** wrap the link itself in backticks.
 
 7. **Write `<module>/schedule/learning-plan.ics`** following `lib/ics.md`. One `VEVENT` per session, stable UIDs.
 
