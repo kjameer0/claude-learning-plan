@@ -3,21 +3,31 @@
 **Type:** <orientation | node-fluency | node-schema | interleaving | grinde-map | review | final-whole>
 **Nodes:** <node ids or "—">
 **Date:** <YYYY-MM-DD>
+**Expected duration:** <planned minutes from cadence.minutes_per_session>
 **Duration:** <actual minutes>
 
 ## Marginal-gains ratings (1–5)
 
 Rate each dimension on a 1–5 scale. 1 = poor, 5 = excellent. Don't overthink — the trend over weeks matters more than any single entry.
 
+**Dimension legend:**
+- **Focus** — how long you stayed on-task before losing focus
+- **Active recall** — how much you pulled from memory vs. re-read
+- **Comprehension depth** — could you explain it / apply to a new case
+- **Energy** — physical/mental sharpness during the session
+- **Frustration tolerance** — staying productive when stuck
+- **Planning accuracy** — expected vs. actual duration fit
+- **Retention** — what stuck from prior sessions without rereading
+
 | Dimension | Rating | Notes |
 |---|---|---|
-| Focus duration before distraction | | |
-| Active recall intensity (vs. passive review) | | |
-| Comprehension depth (surface vs. explain/transfer) | | |
-| Energy and alertness | | |
-| Emotional regulation / frustration tolerance | | |
-| Planning accuracy (was session length realistic?) | | |
-| Retention check (recall yesterday's material cold) | | |
+| Focus | | |
+| Active recall | | |
+| Comprehension depth | | |
+| Energy | | |
+| Frustration tolerance | | |
+| Planning accuracy | | |
+| Retention | | |
 
 ## Retention check details
 What did you try to recall from a previous session? How did it go?

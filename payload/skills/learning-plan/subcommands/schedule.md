@@ -61,20 +61,20 @@ Defaults: weekdays only, 09:00 start time, no initial blackouts.
    - Fluency worksheet: [nodes/<NN-slug>/fluency-v1.md](../nodes/<NN-slug>/fluency-v1.md)
    - Answer key (don't peek until done): [fluency-v1-key.md](../nodes/<NN-slug>/fluency-v1-key.md)
 
-   **When done:** run `/learning-plan finish-session <module> NN`
+   **When done:** run `/learning-plan complete <module> NN`
    ```
 
    Module-root references in orientation / grinde-map / final-whole sessions follow the same rule: `[README.md](../README.md)`, `[goals.md](../goals.md)`, `[concept-graph.md](../concept-graph.md)`. Do **not** wrap the link itself in backticks.
 
 7. **Write `<module>/schedule/learning-plan.ics`** following `lib/ics.md`. One `VEVENT` per session, stable UIDs.
 
-8. **Create empty log template files** at `<module>/schedule/logs/session-NN.md` from `templates/session-log.md` (don't fill them in — the user does that during/after each session). Actually: only create the first one; the rest are created on `finish-session`.
+8. **Create empty log template files** at `<module>/schedule/logs/session-NN.md` from `templates/session-log.md` (don't fill them in — the user does that during/after each session). Actually: only create the first one; the rest are created on `complete`.
 
 9. **Surface to the user:**
    - Total session count, end date
    - Path to `.ics` — instruct to double-click in Finder → choose calendar → import
    - Any worksheet generation errors
-   - Next step: do session 01, then `/learning-plan finish-session <module> 01`
+   - Next step: do session 01, then `/learning-plan complete <module> 01`
 
 ## Activity templates per session type
 
@@ -83,7 +83,7 @@ Defaults: weekdays only, 09:00 start time, no initial blackouts.
 - **node-schema**: `re-read the node file`, `work through each schema exercise`, `attempt the three metacog checks aloud or in writing`, `fill in session log`
 - **interleaving**: `mix problems across listed nodes (5–8 problems total)`, `force yourself to identify which strategy applies before solving`, `fill in session log`
 - **grinde-map**: `redraw the concept-graph from memory on paper (GRINDE principles — grouped, reflective, interconnected, non-verbal, directional, emphasized)`, `compare to concept-graph.md`, `note the delta — that's your weakest schema link`, `fill in session log`
-- **review**: `regenerate fresh fluency problems` (handled by skill, see `finish-session`), `work them`, `re-attempt the metacog checks for the reviewed node`, `fill in session log`
+- **review**: `regenerate fresh fluency problems` (handled by skill, see `complete`), `work them`, `re-attempt the metacog checks for the reviewed node`, `fill in session log`
 - **final-whole**: `re-read concept-graph.md`, `restate the mastery goal from goals.md in your own words`, `attempt the goal-node schema exercise cold`, `fill in session log`, `reflect on what to learn next`
 
 ## Notes

@@ -4,7 +4,7 @@ Structural self-audit of a module. Findings go to `<module>/audit.md`. Non-fatal
 
 ## Inputs
 
-- **Module path** — required. Default to `{{WORKSPACE}}/sample-modules/<inferred-slug>/` if unambiguous.
+- **Module path** — required. Default to `/Users/khalidjameer/claude-workspace/sample-modules/<inferred-slug>/` if unambiguous.
 
 ## Steps
 
