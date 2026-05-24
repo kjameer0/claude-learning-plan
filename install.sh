@@ -7,11 +7,39 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PAYLOAD="$SCRIPT_DIR/payload"
 
+UPDATE=0
+for arg in "$@"; do
+  case "$arg" in
+    -u|--update) UPDATE=1 ;;
+    -h|--help)
+      cat <<USAGE
+Usage: ./install.sh [--update]
+
+  --update, -u   Overwrite existing installed files without prompting.
+                 Use this to pull the latest bundle on a machine that
+                 already has a prior install. Local edits to installed
+                 files will be lost — this bundle is opinionated and
+                 expects no per-machine tweaks.
+
+Environment:
+  CLAUDE_SKILLS_DIR    override ~/.claude/skills
+  CLAUDE_AGENTS_DIR    override ~/.claude/agents
+  CLAUDE_WORKSPACE_DIR override ~/claude-workspace
+USAGE
+      exit 0 ;;
+    *) echo "unknown arg: $arg" >&2; exit 2 ;;
+  esac
+done
+
 CLAUDE_SKILLS="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
 CLAUDE_AGENTS="${CLAUDE_AGENTS_DIR:-$HOME/.claude/agents}"
 WORKSPACE="${CLAUDE_WORKSPACE_DIR:-$HOME/claude-workspace}"
 
-echo "Installing learning-plan bundle"
+if [ "$UPDATE" -eq 1 ]; then
+  echo "Updating learning-plan bundle (existing files will be overwritten)"
+else
+  echo "Installing learning-plan bundle"
+fi
 echo "  skills        -> $CLAUDE_SKILLS"
 echo "  agents        -> $CLAUDE_AGENTS"
 echo "  workspace     -> $WORKSPACE"
@@ -20,6 +48,10 @@ echo
 confirm_overwrite() {
   local path="$1"
   if [ -e "$path" ]; then
+    if [ "$UPDATE" -eq 1 ]; then
+      rm -rf "$path"
+      return 0
+    fi
     read -r -p "  '$path' exists. Overwrite? [y/N] " ans
     [[ "$ans" =~ ^[Yy]$ ]] || { echo "  skipped $path"; return 1; }
     rm -rf "$path"
@@ -107,4 +139,7 @@ Post-install steps:
 To install to non-default locations, re-run with:
   CLAUDE_WORKSPACE_DIR=/custom/workspace CLAUDE_SKILLS_DIR=/custom/skills ./install.sh
 Path tokens in the skill source are resolved automatically at install time.
+
+To update an existing install to the latest version (overwrites without prompting):
+  ./install.sh --update
 EOF

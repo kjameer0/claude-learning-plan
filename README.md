@@ -50,6 +50,14 @@ The installer prompts before overwriting any existing files. Override defaults w
 CLAUDE_SKILLS_DIR=/custom/skills CLAUDE_WORKSPACE_DIR=/custom/workspace ./install.sh
 ```
 
+To update an existing install to the latest bundle on this machine, pull the repo and run:
+
+```sh
+./install.sh --update
+```
+
+This skips the per-file overwrite prompts. The bundle is opinionated — local edits to installed skill/agent files are not preserved across updates.
+
 ## Verify the install
 
 In Claude Code:
