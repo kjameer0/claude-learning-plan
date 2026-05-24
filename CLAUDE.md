@@ -8,6 +8,7 @@ This directory packages the `learning-plan` Claude Code skill plus dependencies.
 |---|---|---|
 | `payload/skills/learning-plan` | `~/.claude/skills/learning-plan` | Main skill |
 | `payload/skills/math-worksheet` | `~/.claude/skills/math-worksheet` | Required dependency |
+| `payload/skills/wolfram` | `~/.claude/skills/wolfram` | Ad-hoc Wolfram queries (wraps `math-worksheet/verify.py`) |
 | `payload/workspace/ai-resources/learning-philosophy.md` | `~/claude-workspace/ai-resources/learning-philosophy.md` | Foundational reference |
 | `payload/workspace/sample-modules/quadratics` | `~/claude-workspace/sample-modules/quadratics` | Canonical example module |
 

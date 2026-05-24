@@ -36,7 +36,7 @@ END:VEVENT
 - **UID** — `<module>-session-<NN>@learning-plan`. Zero-padded `NN`. This is what makes re-imports update in place rather than duplicate.
 - **DTSTAMP** — current UTC time when the `.ics` is generated. Format: `YYYYMMDDTHHMMSSZ` (note the trailing `Z`).
 - **DTSTART / DTEND** — local time with TZID. Format: `YYYYMMDDTHHMMSS` (no `Z`).
-- **SUMMARY** — short, scannable. Example: `quadratics: session 04 — node-schema — 02-factoring`.
+- **SUMMARY** — short, scannable. **Lead with the session number/type so calendar list views are useful** — the module name comes last in parentheses. Format: `Session NN — <type> — <node ids or "interleave"> (<module>)`. Example: `Session 04 — node-schema — 02-factoring (quadratics)`.
 - **DESCRIPTION** — multi-line is allowed by folding (continuation lines start with a space). Use `\n` literal for newlines in the value. Include:
   - Activity checklist (copied from `schedule/sessions.md` for this session)
   - Path to the node file(s)
@@ -61,7 +61,7 @@ UID:quadratics-session-04@learning-plan
 DTSTAMP:20260521T160000Z
 DTSTART;TZID=America/Los_Angeles:20260528T090000
 DTEND;TZID=America/Los_Angeles:20260528T094500
-SUMMARY:quadratics: session 04 — node-schema — 02-factoring
+SUMMARY:Session 04 — node-schema — 02-factoring (quadratics)
 DESCRIPTION:Schema-building session for node 02-factoring.\n\nActivities:\n- Re-read nodes/02-factoring.md\n- Work through schema exercises 1-3\n- Attempt three metacog checks\n- Fill in schedule/logs/session-04.md\n\nReferences:\n- Node: nodes/02-factoring.md\n- Worksheet (already done in session 03): nodes/02-factoring/fluency-v1.md\n\nWhen done\, run /learning-plan complete quadratics 04
 END:VEVENT
 ```

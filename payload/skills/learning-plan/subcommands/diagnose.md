@@ -45,7 +45,11 @@ Produce a learner-facing diagnostic worksheet sampling key nodes. Results inform
    ...
    ```
 
-4. **Generate the answer key** at `<module>/diagnostic-key.md`. For each fluency problem use `math-worksheet`'s Wolfram-verified answer. For schema exercises include a worked solution or rubric.
+4. **Generate the answer key** at `<module>/diagnostic-key.md`.
+   - **Every problem's final answer must be Wolfram-verified before writing the key**, regardless of type. Use the `wolfram` skill (`{{SKILLS_DIR}}/wolfram/SKILL.md`) — run a query that asks the same question the problem asks, read the `Input interpretation:` line to confirm the parse, then compare Wolfram's result to your worked answer. If they disagree, the worked solution is wrong — find the step where they diverge and fix it.
+   - For fluency problems, the answer is whatever `math-worksheet` already verified.
+   - For schema / worked-solution problems, write the steps by hand but anchor the final answer to Wolfram. This catches dropped terms, sign errors, and bad substitutions that hand-algebra slips past (e.g. forgetting a constant when substituting `u = x² - 5x` into `… + 4 + 4/u = 8`).
+   - Include a rubric only for problems where the answer is qualitative (proof, explanation, "describe the method") and Wolfram can't be asked the same question.
 
 5. **Tell the user** what to do:
    - Solve the diagnostic

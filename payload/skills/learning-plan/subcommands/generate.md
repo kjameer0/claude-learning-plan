@@ -31,7 +31,19 @@ If the user invokes without learner state, ask for it before generating. Without
    - `plan.yaml` — machine-readable model. See structure below.
    - Do **not** create `nodes/NN-<slug>/` subfolders or `schedule/` here — those are created by `schedule`.
 
-6. **Recommend next steps.** End by telling the user to run `/learning-plan audit <path>` and then `/learning-plan diagnose <path>` before `schedule`.
+6. **Initialize a git repo in the module folder.** Modules are living documents — every subcommand (`refine`, `schedule`, `complete`, `reschedule`) mutates them, and session logs accrete over weeks/months. Tracking the module in git from day one preserves the audit trail of decisions and lets the user roll back a bad refine. Run:
+
+   ```sh
+   cd <module>
+   git init -b main
+   printf '%s\n' '.DS_Store' '*.pdf' > .gitignore
+   git add .
+   git commit -m "Initial commit — <module> module scaffold"
+   ```
+
+   Then ask the user whether they want a remote (GitHub or otherwise). Don't push unprompted — that's a publishing action. If they say yes and `gh` is installed and authenticated, use `gh repo create <module> --source=. --remote=origin --push` with `--private` or `--public` per their preference (default `--private` for personal learning notes).
+
+7. **Recommend next steps.** End by telling the user to run `/learning-plan audit <path>` and then `/learning-plan diagnose <path>` before `schedule`. Remind them to commit after each major subcommand run so the module's history is legible.
 
 ## `plan.yaml` structure for `generate`
 
