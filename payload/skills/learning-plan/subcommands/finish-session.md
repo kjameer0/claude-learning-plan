@@ -1,4 +1,4 @@
-# complete
+# finish-session
 
 Mark a session done. Updates `plan.yaml`, writes the log template for the next session, regenerates the `.ics` with shifted downstream targets, and pre-generates a fresh fluency worksheet if the next session is a review.
 

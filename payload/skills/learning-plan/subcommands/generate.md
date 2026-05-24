@@ -31,7 +31,7 @@ If the user invokes without learner state, ask for it before generating. Without
    - `plan.yaml` — machine-readable model. See structure below.
    - Do **not** create `nodes/NN-<slug>/` subfolders or `schedule/` here — those are created by `schedule`.
 
-6. **Initialize a git repo in the module folder.** Modules are living documents — every subcommand (`refine`, `schedule`, `complete`, `reschedule`) mutates them, and session logs accrete over weeks/months. Tracking the module in git from day one preserves the audit trail of decisions and lets the user roll back a bad refine. Run:
+6. **Initialize a git repo in the module folder.** Modules are living documents — every subcommand (`refine`, `schedule`, `finish-session`, `update-schedule`) mutates them, and session logs accrete over weeks/months. Tracking the module in git from day one preserves the audit trail of decisions and lets the user roll back a bad refine. Run:
 
    ```sh
    cd <module>

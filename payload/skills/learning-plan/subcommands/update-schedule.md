@@ -1,4 +1,4 @@
-# reschedule
+# update-schedule
 
 Apply blackouts or date shifts and regenerate the `.ics` for re-import. Stable UIDs mean Calendar.app updates events in place.
 
@@ -33,18 +33,18 @@ If no flags are passed, ask the user what they want to change.
    - Total number of sessions whose dates moved
    - Re-import the `.ics` to sync
 
-## Common reschedule scenarios
+## Common update-schedule scenarios
 
 | Scenario | Command |
 |---|---|
-| Going on vacation | `reschedule <module> --add-blackout 2026-06-15..2026-06-22` |
-| Taking a single day off | `reschedule <module> --add-blackout 2026-05-30` |
-| Pause until a known restart date | `reschedule <module> --from 2026-07-01` |
-| Switching from 5×/week to 3×/week | `reschedule <module> --cadence sessions_per_week=3` |
-| Restoring a removed day | `reschedule <module> --remove-blackout 2026-05-30` |
+| Going on vacation | `update-schedule <module> --add-blackout 2026-06-15..2026-06-22` |
+| Taking a single day off | `update-schedule <module> --add-blackout 2026-05-30` |
+| Pause until a known restart date | `update-schedule <module> --from 2026-07-01` |
+| Switching from 5×/week to 3×/week | `update-schedule <module> --cadence sessions_per_week=3` |
+| Restoring a removed day | `update-schedule <module> --remove-blackout 2026-05-30` |
 
 ## Notes
 
-- `reschedule` never changes the session sequence — it only changes when sessions happen. The skill never adds, removes, or reorders sessions here. Use `refine` for structural changes.
+- `update-schedule` never changes the session sequence — it only changes when sessions happen. The skill never adds, removes, or reorders sessions here. Use `refine` for structural changes.
 - If a blackout range covers a completed session's date, that's fine — the completed session's date is preserved as-is.
 - If `--from` is earlier than the latest completed session's date, refuse — that would require uncompleting work.

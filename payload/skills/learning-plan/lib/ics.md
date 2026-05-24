@@ -42,7 +42,7 @@ END:VEVENT
   - Path to the node file(s)
   - Path to the worksheet (if applicable)
   - Path to the session log template
-  - Reminder: `When done, run /learning-plan complete <module> <NN>`
+  - Reminder: `When done, run /learning-plan finish-session <module> <NN>`
 
 ### Escaping in DESCRIPTION
 
@@ -62,7 +62,7 @@ DTSTAMP:20260521T160000Z
 DTSTART;TZID=America/Los_Angeles:20260528T090000
 DTEND;TZID=America/Los_Angeles:20260528T094500
 SUMMARY:Session 04 — node-schema — 02-factoring (quadratics)
-DESCRIPTION:Schema-building session for node 02-factoring.\n\nActivities:\n- Re-read nodes/02-factoring.md\n- Work through schema exercises 1-3\n- Attempt three metacog checks\n- Fill in schedule/logs/session-04.md\n\nReferences:\n- Node: nodes/02-factoring.md\n- Worksheet (already done in session 03): nodes/02-factoring/fluency-v1.md\n\nWhen done\, run /learning-plan complete quadratics 04
+DESCRIPTION:Schema-building session for node 02-factoring.\n\nActivities:\n- Re-read nodes/02-factoring.md\n- Work through schema exercises 1-3\n- Attempt three metacog checks\n- Fill in schedule/logs/session-04.md\n\nReferences:\n- Node: nodes/02-factoring.md\n- Worksheet (already done in session 03): nodes/02-factoring/fluency-v1.md\n\nWhen done\, run /learning-plan finish-session quadratics 04
 END:VEVENT
 ```
 

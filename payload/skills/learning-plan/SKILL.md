@@ -1,6 +1,6 @@
 ---
 name: learning-plan
-description: Generate, audit, refine, schedule, and run learning modules for math (or any prerequisite-heavy domain) following the learning philosophy at {{WORKSPACE}}/ai-resources/learning-philosophy.md. Produces a concept-DAG module folder with typed exercises (fluency + schema-building), pre-generated worksheets via the math-worksheet skill, a calendar (.ics) schedule with stable session UIDs, and session logs for marginal-gains tracking. Use when the user wants to plan a learning module, schedule study sessions on their calendar, mark a session complete, reschedule around blackouts, or refine an existing module. Subcommands - generate, audit, diagnose, refine, schedule, complete, reschedule.
+description: Generate, audit, refine, schedule, and run learning modules for math (or any prerequisite-heavy domain) following the learning philosophy at {{WORKSPACE}}/ai-resources/learning-philosophy.md. Produces a concept-DAG module folder with typed exercises (fluency + schema-building), pre-generated worksheets via the math-worksheet skill, a calendar (.ics) schedule with stable session UIDs, and session logs for marginal-gains tracking. Use when the user wants to plan a learning module, schedule study sessions on their calendar, mark a session done, shift the schedule around blackouts, or refine an existing module. Subcommands - generate, audit, diagnose, refine, schedule, finish-session, update-schedule.
 ---
 
 # learning-plan
@@ -28,12 +28,12 @@ The canonical reference module (matches the structure all generated modules shou
 | Subcommand | File | Purpose |
 |---|---|---|
 | `generate <topic>` | `subcommands/generate.md` | Create a module folder (DAG, nodes, goals) |
-| `audit <module-path>` | `subcommands/audit.md` | Structural self-audit |
-| `diagnose <module-path>` | `subcommands/diagnose.md` | Learner-facing diagnostic worksheet |
-| `refine <module-path>` | `subcommands/refine.md` | Apply fixes from audit / diagnose / session logs |
-| `schedule <module-path>` | `subcommands/schedule.md` | Cadence + worksheets + `.ics` |
-| `complete <module> <session-id>` | `subcommands/complete.md` | Mark session done, recompute downstream |
-| `reschedule <module>` | `subcommands/reschedule.md` | Apply blackouts/shifts, regenerate `.ics` |
+| `audit <module-path>` | `subcommands/audit.md` | Self-audit the module's *structure* (DAG, node coverage, philosophy compliance) — no learner involved |
+| `diagnose <module-path>` | `subcommands/diagnose.md` | Generate a diagnostic worksheet for the *learner* to take, then read their answers to find mastery gaps |
+| `refine <module-path>` | `subcommands/refine.md` | Apply fixes surfaced by audit, diagnose, or session logs (edit nodes, update fluency specs, etc.) |
+| `schedule <module-path>` | `subcommands/schedule.md` | Build the cadence, pre-generate worksheets, and emit the initial `.ics` |
+| `finish-session <module> <session-id>` | `subcommands/finish-session.md` | Mark one session done, recompute downstream dates, write next log, regenerate `.ics` |
+| `update-schedule <module>` | `subcommands/update-schedule.md` | Apply blackouts/cadence changes and regenerate the `.ics` (does not change session sequence) |
 
 If the user invokes `/learning-plan` with no subcommand, ask which phase they want — don't assume. If the user describes a goal in natural language (e.g. "schedule my quadratics sessions"), pick the matching subcommand without re-asking.
 

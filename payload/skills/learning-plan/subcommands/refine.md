@@ -18,7 +18,7 @@ Apply fixes to a module from any of three input sources: `audit.md`, `diagnostic
    - **Content edit** — add/remove/rewrite exercises, sources, metacog checks
    - **DAG edit** — add/remove a node, change prereqs/enables
    - **Calibration edit** — adjust `fluency_spec.count` or `fluency_spec.difficulty`
-   - **Schedule edit** — recommend a reschedule (don't do it from refine — surface the recommendation)
+   - **Schedule edit** — recommend an `update-schedule` (don't do it from refine — surface the recommendation)
    - **Cannot fix automatically** — surface to user for decision
 
 3. **Apply content and DAG edits** by directly editing the relevant files. For each edit:
@@ -46,7 +46,7 @@ Apply fixes to a module from any of three input sources: `audit.md`, `diagnostic
 
    ### Recommended follow-ups
    - Run `/learning-plan audit <module>` to confirm fixes
-   - Run `/learning-plan reschedule <module>` because calibration changed
+   - Run `/learning-plan update-schedule <module>` because calibration changed
    ```
 
 6. **Surface the "user decision required" list.** Ask the user to resolve each one. After they answer, re-run the affected edits.
