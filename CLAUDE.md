@@ -8,7 +8,8 @@ This directory packages the `learning-plan` Claude Code skill plus dependencies.
 |---|---|---|
 | `payload/skills/learning-plan` | `~/.claude/skills/learning-plan` | Main skill |
 | `payload/skills/math-worksheet` | `~/.claude/skills/math-worksheet` | Required dependency |
-| `payload/skills/wolfram` | `~/.claude/skills/wolfram` | Ad-hoc Wolfram queries (wraps `math-worksheet/verify.py`) |
+| `payload/skills/wolfram` | `~/.claude/skills/wolfram` | Ad-hoc Wolfram queries — delegates execution to the `wolfram-runner` subagent |
+| `payload/agents/wolfram-runner.md` | `~/.claude/agents/wolfram-runner.md` | Sonnet subagent that runs Wolfram queries so verbose output stays out of the parent (Opus) context |
 | `payload/workspace/ai-resources/learning-philosophy.md` | `~/claude-workspace/ai-resources/learning-philosophy.md` | Foundational reference |
 | `payload/workspace/sample-modules/quadratics` | `~/claude-workspace/sample-modules/quadratics` | Canonical example module |
 

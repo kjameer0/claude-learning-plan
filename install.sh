@@ -8,10 +8,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PAYLOAD="$SCRIPT_DIR/payload"
 
 CLAUDE_SKILLS="${CLAUDE_SKILLS_DIR:-$HOME/.claude/skills}"
+CLAUDE_AGENTS="${CLAUDE_AGENTS_DIR:-$HOME/.claude/agents}"
 WORKSPACE="${CLAUDE_WORKSPACE_DIR:-$HOME/claude-workspace}"
 
 echo "Installing learning-plan bundle"
 echo "  skills        -> $CLAUDE_SKILLS"
+echo "  agents        -> $CLAUDE_AGENTS"
 echo "  workspace     -> $WORKSPACE"
 echo
 
@@ -25,12 +27,13 @@ confirm_overwrite() {
   return 0
 }
 
-mkdir -p "$CLAUDE_SKILLS" "$WORKSPACE/ai-resources" "$WORKSPACE/sample-modules"
+mkdir -p "$CLAUDE_SKILLS" "$CLAUDE_AGENTS" "$WORKSPACE/ai-resources" "$WORKSPACE/sample-modules"
 
 # Resolve to absolute paths for token substitution so installed skills work
 # regardless of which directory Claude is invoked from.
 ABS_WORKSPACE="$(cd "$WORKSPACE" && pwd)"
 ABS_SKILLS="$(cd "$CLAUDE_SKILLS" && pwd)"
+ABS_AGENTS="$(cd "$CLAUDE_AGENTS" && pwd)"
 
 substitute_tokens() {
   # In-place replace {{WORKSPACE}} and {{SKILLS_DIR}} across a directory tree.
@@ -53,6 +56,24 @@ for skill in learning-plan math-worksheet wolfram; do
     echo "  installed skill: $skill (paths resolved)"
   fi
 done
+
+if [ -d "$PAYLOAD/agents" ]; then
+  for agent_file in "$PAYLOAD/agents"/*.md; do
+    [ -e "$agent_file" ] || continue
+    agent_name="$(basename "$agent_file")"
+    dest="$CLAUDE_AGENTS/$agent_name"
+    if confirm_overwrite "$dest"; then
+      cp "$agent_file" "$dest"
+      sed -i.bak \
+        -e "s|{{WORKSPACE}}|$ABS_WORKSPACE|g" \
+        -e "s|{{SKILLS_DIR}}|$ABS_SKILLS|g" \
+        -e "s|{{AGENTS_DIR}}|$ABS_AGENTS|g" \
+        "$dest"
+      rm -f "$dest.bak"
+      echo "  installed agent: ${agent_name%.md} (paths resolved)"
+    fi
+  done
+fi
 
 phil_dest="$WORKSPACE/ai-resources/learning-philosophy.md"
 if confirm_overwrite "$phil_dest"; then
