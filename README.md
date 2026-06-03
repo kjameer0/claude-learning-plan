@@ -19,6 +19,7 @@ Skills (you invoke these as `/<name>` in Claude Code):
 | Skill | Purpose |
 |---|---|
 | `/learning-plan` | Build, schedule, and run a learning module |
+| `/drill` | Interactive Q&A session against a module or worksheet, with Wolfram-verified answer checking |
 | `/math-worksheet` | Generate a Wolfram-verified problem set |
 | `/wolfram` | One-off Wolfram Alpha queries |
 | `/image` | Read or grade screenshots, photos, handwritten work, PDFs |
@@ -153,7 +154,7 @@ Skipping it works, but you'll be confused by why the generated artifacts look th
 ## Uninstall
 
 ```sh
-rm -rf ~/.claude/skills/learning-plan ~/.claude/skills/math-worksheet ~/.claude/skills/wolfram ~/.claude/skills/image
+rm -rf ~/.claude/skills/learning-plan ~/.claude/skills/math-worksheet ~/.claude/skills/wolfram ~/.claude/skills/image ~/.claude/skills/drill
 rm -f ~/.claude/agents/wolfram-runner.md ~/.claude/agents/image-reader.md ~/.claude/agents/grade-runner.md
 rm -rf ~/claude-workspace/sample-modules/quadratics
 rm  ~/claude-workspace/ai-resources/learning-philosophy.md
