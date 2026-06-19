@@ -6,7 +6,7 @@ Create a new learning module folder for a given topic, conforming to the structu
 
 - **Topic** (e.g. "trigonometry basics", "linear algebra: vectors")
 - **Learner state** — a short markdown blob describing what they know, what they're shaky on, what they haven't touched. Used to (a) pick the entry node and (b) flag missing prereqs.
-- **Output path** — default `/Users/khalidjameer/Documents/Obsidian Vaults/Personal Vault/Learning/<topic-slug>/`. Confirm before writing if the path already exists.
+- **Output path** — ask the user where they want the module before writing anything. Do not assume a default location. Confirm before writing if the path already exists.
 - **Format** — default to Obsidian format: use `[[node-slug]]` wikilinks for all internal node references instead of backtick or relative path references. Do not use markdown relative links between node files.
 
 If the user invokes without learner state, ask for it before generating. Without it, the entry node guess is unreliable.
